@@ -1,5 +1,5 @@
 package com.orella.repositories;
 
-public class WishlistRepository {
+public interface WishlistRepository {
 
 }
