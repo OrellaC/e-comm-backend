@@ -1,0 +1,5 @@
+package com.orella.repositories;
+
+public interface HelpRepository {
+
+}

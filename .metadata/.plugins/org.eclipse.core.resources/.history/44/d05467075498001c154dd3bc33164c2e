@@ -1,0 +1,33 @@
+package com.orella.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="wishlist")
+public class WishlistModel {
+	@Column
+	private String itemName;
+	@Column
+	private String itemDescription;
+	
+	
+	public String getItemName() {
+		return itemName;
+	}
+	
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	
+	public String getItemDescription() {
+		return itemDescription;
+	}
+	
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
+	
+	
+}

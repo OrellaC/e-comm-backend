@@ -1,0 +1,5 @@
+package com.orella.controllers;
+
+public class WishlistController {
+
+}
