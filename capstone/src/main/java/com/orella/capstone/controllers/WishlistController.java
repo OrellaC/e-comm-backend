@@ -3,10 +3,13 @@ package com.orella.capstone.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.orella.capstone.exceptions.ResourceNotFoundException;
 import com.orella.capstone.models.WishlistModel;
 import com.orella.capstone.repository.WishlistRepository;
 
@@ -21,7 +24,13 @@ import com.orella.capstone.repository.WishlistRepository;
 	
 	@GetMapping ("/allwishlistitems")
 	public List<WishlistModel> getAllWishlistItems() {
-		System.out.println("hello");
 		return wishlistRepo.findAll();
+	}
+	
+	@GetMapping("item/{id}")
+	public ResponseEntity<WishlistModel> getItemById(@PathVariable int id){
+		WishlistModel item = wishlistRepo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException ("Item not found."));
+				return ResponseEntity.ok(item);
 	}
 }
