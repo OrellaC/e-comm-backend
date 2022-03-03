@@ -1199,3 +1199,10 @@
 2022-03-02 23:43:18,337 [Worker-194: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-03-02 23:43:18,337 [Worker-194: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2022-03-02 23:43:18,337 [Worker-194: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/orellachichester/Desktop/CapBackend/capstone/src/test/resources
+2022-03-02 23:46:24,914 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-03-02 23:46:24,922 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-03-02 23:46:24,925 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-03-02 23:46:24,941 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-03-02 23:46:24,943 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-03-02 23:46:24,943 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-03-02 23:46:24,944 [Worker-198: Launching capstone - CapstoneApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/orellachichester/Desktop/CapBackend/capstone/src/test/resources
