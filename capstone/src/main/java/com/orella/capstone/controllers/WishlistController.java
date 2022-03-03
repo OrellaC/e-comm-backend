@@ -20,7 +20,6 @@ import com.orella.capstone.repository.WishlistRepository;
 
 
 @RestController
-//@CrossOrigin
 @RequestMapping("/api/v1")
  public class WishlistController {
 	
