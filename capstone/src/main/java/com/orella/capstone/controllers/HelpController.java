@@ -3,10 +3,13 @@ package com.orella.capstone.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,4 +58,26 @@ public class HelpController {
 			return helpRepo.save(issue);
 	}
 		
+		@PutMapping("updateissue/{id}")
+		public ResponseEntity<HelpModel> updateIssue(@PathVariable int id, @RequestBody HelpModel newIssue){
+			HelpModel foundIssue = helpRepo.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Issue type not found."));
+			
+			foundIssue.setIssuetype(newIssue.getIssuetype());
+			foundIssue.setIssuedescription(newIssue.getIssuedescription());
+			
+			HelpModel updatedIssue = helpRepo.save(foundIssue);
+			
+			return ResponseEntity.ok(updatedIssue);
+		}
+		
+		//Delete request that deletes issue by their id number. Fulfills the Delete requirement in CRUD
+				@DeleteMapping("/deleteissue/{id}")
+				public ResponseEntity<String> deleteIssue(@PathVariable int id) {
+					helpRepo.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("Issue type not found."));
+					String message = "Item has been deleted.";
+					helpRepo.deleteById(id);
+					return new ResponseEntity<>(message, HttpStatus.OK);
+		}
 }
