@@ -3,7 +3,9 @@ package com.orella.capstone.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,14 +31,14 @@ import com.orella.capstone.repository.WishlistRepository;
 		return wishlistRepo.findAll();
 	}
 	
-	@GetMapping("item/{id}")
+	@GetMapping("/finditem/{id}")
 	public ResponseEntity<WishlistModel> getItemById(@PathVariable int id){
 		WishlistModel item = wishlistRepo.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException ("Item not found."));
 				return ResponseEntity.ok(item);
 	}
 	
-	@GetMapping("allitems/{itemname}")
+	@GetMapping("/allitems/{itemname}")
 	public List<WishlistModel> getItemByItemname (@PathVariable String itemname){
 		List<WishlistModel> items = wishlistRepo.findByItemname(itemname);
 		if(items.isEmpty()) {
@@ -45,10 +47,10 @@ import com.orella.capstone.repository.WishlistRepository;
 		return wishlistRepo.findByItemname(itemname);
 	}
 	
-	@PostMapping("additem")
+	@PostMapping("/additem")
 	public WishlistModel newItem(@RequestBody WishlistModel item) {
 		return wishlistRepo.save(item);
-//}
+}
 //
 //	@PutMapping("item/{id}")
 //	public ResponseEntity<Student> updateStudent(@PathVairable int id, @RequestBody WishlistModel newItem){
@@ -60,6 +62,13 @@ import com.orella.capstone.repository.WishlistRepository;
 //		WishlistModel updatedIssue = wishlistRepo.save(foundIssue);
 //		
 //		return ResponseEntity.ok(updatedIssue);
-//	
+	
+		@DeleteMapping("/deleteitem/{id}")
+		public ResponseEntity<String> deleteItem(@PathVariable int id) {
+			wishlistRepo.findById(id)
+			.orElseThrow(() -> new ResourceNotFoundException("Item not found."));
+			String message = "Item has been deleted.";
+			wishlistRepo.deleteById(id);
+			return new ResponseEntity<>(message, HttpStatus.OK);
 }
 }
