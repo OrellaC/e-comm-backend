@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,14 +40,14 @@ import com.orella.capstone.repository.WishlistRepository;
 	public List<WishlistModel> getItemByItemname (@PathVariable String itemname){
 		List<WishlistModel> items = wishlistRepo.findByItemname(itemname);
 		if(items.isEmpty()) {
-			System.out.println(new ResourceNotFoundException("Wishlist item submissions with the name" + itemname + "not found"));
+			System.out.println(new ResourceNotFoundException("Wishlist item(s) with the name " + itemname + " not found"));
 		}
 		return wishlistRepo.findByItemname(itemname);
-//	}
-//	
-//	@PostMapping("updateitem")
-//	public WishlistModel newWishlistModel(@RequestBody WishlistModel ...) {
-//		return wishlistRepo.save(null);
+	}
+	
+	@PostMapping("additem")
+	public WishlistModel newItem(@RequestBody WishlistModel item) {
+		return wishlistRepo.save(item);
 //}
 //
 //	@PutMapping("item/{id}")
