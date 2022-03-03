@@ -32,7 +32,7 @@ public class WishlistModel {
 		return itemname;
 	}
 	
-	public void setItemName(String itemname) {
+	public void setItemname(String itemname) {
 		this.itemname = itemname;
 	}
 	
