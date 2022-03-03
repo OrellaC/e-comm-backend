@@ -36,4 +36,15 @@ public class HelpController {
 					return ResponseEntity.ok(issue);
 		}
 		
+//		Get request that finds issues by their name 
+		@GetMapping("/findissuebytype/{issuetype}")
+		public List<HelpModel> getIssueByIssuetype (@PathVariable String issuetype){
+			List<HelpModel> issue = helpRepo.findByIssuetype(issuetype);
+			if(issue.isEmpty()) {
+				System.out.println(new ResourceNotFoundException("Issue type with the name " + issuetype + " not found"));
+			}
+			return helpRepo.findByIssuetype(issuetype);
+		}
+
+		
 }
