@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,4 +34,31 @@ import com.orella.capstone.repository.WishlistRepository;
 				.orElseThrow(() -> new ResourceNotFoundException ("Item not found."));
 				return ResponseEntity.ok(item);
 	}
+	
+	@GetMapping("allitems/{itemname}")
+	public List<WishlistModel> getItemByItemname (@PathVariable String itemname){
+		List<WishlistModel> items = wishlistRepo.findByItemname(itemname);
+		if(items.isEmpty()) {
+			System.out.println(new ResourceNotFoundException("Wishlist item submissions with the name" + itemname + "not found"));
+		}
+		return wishlistRepo.findByItemname(itemname);
+//	}
+//	
+//	@PostMapping("updateitem")
+//	public WishlistModel newWishlistModel(@RequestBody WishlistModel ...) {
+//		return wishlistRepo.save(null);
+//}
+//
+//	@PutMapping("item/{id}")
+//	public ResponseEntity<Student> updateStudent(@PathVairable int id, @RequestBody WishlistModel newItem){
+//		WishlistModel = wishlistRepo.findById(id)
+//				.orElseThrow(() -> new ResourceNotFoundException("Item not found."));
+//		foundWishlistModel.setIssuename(newIssue.getIssuename());
+//		foundWishlistModel.setIssuedescription(newIssue.getIssuedescription());
+//		
+//		WishlistModel updatedIssue = wishlistRepo.save(foundIssue);
+//		
+//		return ResponseEntity.ok(updatedIssue);
+//	
+}
 }

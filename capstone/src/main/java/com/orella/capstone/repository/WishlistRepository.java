@@ -9,7 +9,11 @@ import com.orella.capstone.models.WishlistModel;
 
 @Repository
 public interface WishlistRepository extends JpaRepository <WishlistModel, Integer>{
-		List<WishlistModel> findAll();
+//		List<WishlistModel> findAll();
+
+		List<WishlistModel> findByItemname(String itemname);
+
+	
 		
 	}
 
