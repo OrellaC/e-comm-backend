@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.orella.capstone.models.HelpModel;
-import com.orella.capstone.models.WishlistModel;
+
 
 @Repository
 public interface HelpRepository extends JpaRepository <HelpModel, Integer> {
